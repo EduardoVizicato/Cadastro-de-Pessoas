@@ -8,8 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<BancoContext>(opt => {
    opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-   builder.Services.AddScoped<IContatoRepository, ContatoRepository>();
 });
+builder.Services.AddScoped<IContatoRepository, ContatoRepository>();
 
 var app = builder.Build();
 

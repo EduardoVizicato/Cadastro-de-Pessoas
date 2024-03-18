@@ -13,7 +13,10 @@ namespace Cadastro_de_Pessoas.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            List<ContatoModelcs> contatos = _contatoRepository.buscarTodos();
+
+
+            return View(contatos);
         }
         public IActionResult Create()
         {

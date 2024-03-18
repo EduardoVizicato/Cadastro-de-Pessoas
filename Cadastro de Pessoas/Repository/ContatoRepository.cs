@@ -10,6 +10,12 @@ namespace Cadastro_de_Pessoas.Repository
         {
             _bancoContext = bancoContext;
         }
+
+        public List<ContatoModelcs> buscarTodos()
+        {
+            return _bancoContext.Contatos.ToList();
+        }
+
         public ContatoModelcs Adicionar(ContatoModelcs contato)
         {
             //gravar banco de dados
