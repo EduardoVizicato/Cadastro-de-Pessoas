@@ -1,10 +1,11 @@
-﻿@{
+﻿@model ContatoModelcs
+@{
     ViewData["Title"] = "Confirmação de Exclusão de contato";
 }
 
 <div class="text-center ">
-    <h3>Deseja realmente apagar o contato (Eduardo) ?</h3>
+    <h3>Deseja realmente apagar o contato (@Model.nome) ?</h3>
 </div>
-
+    
 <a class="btn btn-success" role="button" asp-controller="Contato" asp-action="Index">Cancelar exlusão</a>
-<a class="btn btn-danger" role="button" asp-controller="Contato" asp-action="Delete">Confirmar exclusão exlusão</a>
+<a class="btn btn-danger" role="button" asp-controller="Contato" asp-action="Delete" asp-route-id="@Model.id">Confirmar exclusão exlusão</a>

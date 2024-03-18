@@ -23,5 +23,43 @@ namespace Cadastro_de_Pessoas.Repository
             _bancoContext.SaveChanges();
             return contato;
         }
+
+        public ContatoModelcs ListId(int id)
+        {
+            return _bancoContext.Contatos.FirstOrDefault(x => x.id == id);
+        }
+
+        public ContatoModelcs edit(ContatoModelcs contato)
+        {
+            ContatoModelcs contatoDB = ListId(contato.id);
+
+            if(contatoDB == null)
+            {
+                new System.Exception("houve um erro na atualização");
+            }
+
+            contatoDB.nome = contato.nome;
+            contatoDB.email = contato.email;
+            contatoDB.celular = contato.celular;
+
+            _bancoContext.Contatos.Update(contatoDB);
+            _bancoContext.SaveChanges();
+            return contatoDB;
+        }
+
+        public bool delete(int id)
+        {
+            ContatoModelcs contatoDB = ListId(id);
+
+            if (contatoDB == null)
+            {
+                new System.Exception("houve um erro na deleção do contato !!");
+
+            }
+
+            _bancoContext.Contatos.Remove(contatoDB);
+            _bancoContext.SaveChanges();
+             return true;
+        }
     }
 }

@@ -22,14 +22,15 @@ namespace Cadastro_de_Pessoas.Controllers
         {
             return View();
         }
-        public IActionResult Edit
-            ()
+        public IActionResult Edit(int id)
         {
-            return View();
+            ContatoModelcs contato = _contatoRepository.ListId(id);
+            return View(contato);
         }
-        public IActionResult DeleteConfirmation()
+        public IActionResult DeleteConfirmation(int id)
         {
-            return View();
+            ContatoModelcs contato = _contatoRepository.ListId(id);
+            return View(contato );
         }
 
        [HttpPost]
@@ -38,5 +39,17 @@ namespace Cadastro_de_Pessoas.Controllers
            _contatoRepository.Adicionar (contato);
            return RedirectToAction("Index");
        }
+        [HttpPost]
+        public IActionResult Edit(ContatoModelcs contato)
+        {
+            _contatoRepository.edit(contato);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            _contatoRepository.delete(id);
+            return RedirectToAction("Index");
+        }
     }
 }
